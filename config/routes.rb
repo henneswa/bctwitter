@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  root 'tweets#new'
+  devise_for :users
+  root 'static_pages#index'
+
+  # root 'new_user_registration#new'
 
   resources :tweets 
   # The priority is based upon order of creation: first created -> highest priority.
