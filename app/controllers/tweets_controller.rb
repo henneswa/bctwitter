@@ -16,15 +16,11 @@ class TweetsController < ApplicationController
 
 		if @tweet.save
 			flash.now[:success]= "Tweet Created"
-		#else 
-			#simple form takes care it for us
+			redirect_to new_tweet_path
+		else 
+			flash.now[:danger]= "No luck"
+			render 'new'
 		end 	
-
-		
-		
-			
-			
-		render 'new'
 	end
 
 	def index 
