@@ -10,18 +10,26 @@ class TweetsController < ApplicationController
 	def create
 
 		@tweet = Tweet.new(tweet_params)
+		#@tweet=Tweet.create(tweet_params)
 		@tweet.user=current_user 
-		@tweet.save
-
 		@tweets = current_user.tweets 
-		@tweet=Tweet.create(tweet_params)
-		flash.now[:success]= "Tweet Created"
+
+		if @tweet.save
+			flash.now[:success]= "Tweet Created"
+		#else 
+			#simple form takes care it for us
+		end 	
+
+		
+		
+			
+			
 		render 'new'
 	end
 
 	def index 
 		@tweets = Tweet.all.reject{ |tweet| tweet.user == current_user }
-
+		@relationship= Relationship.new 
 	end 	
 
 	private 
