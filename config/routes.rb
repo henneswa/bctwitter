@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # root 'new_user_registration#new'
 
   resources :tweets 
+  resources :profiles
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
