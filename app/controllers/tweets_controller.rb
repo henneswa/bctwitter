@@ -3,6 +3,7 @@ class TweetsController < ApplicationController
 	
 	def new 
 		@tweet = Tweet.new
+		#the Tweet with uppercase refers to the model 
 		@tweets = current_user.tweets 
 	end
 
@@ -17,6 +18,11 @@ class TweetsController < ApplicationController
 		flash.now[:success]= "Tweet Created"
 		render 'new'
 	end
+
+	def index 
+		@tweets = Tweet.all.reject{ |tweet| tweet.user == current_user }
+
+	end 	
 
 	private 
 
